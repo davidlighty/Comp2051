@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- No HTML -->
+<html>
+<head>
+	<script type="text/javascript" src="/js/nohtml.js"></script>
+	<script type="text/javascript" src="/js/util.js"></script>
+	<script type="text/javascript">
+	// MAIN RUN
+window.onload = function() {
+	var oNoHtml = new noHTML();
+	oNoHtml.createNoHtml();
+}
+</script>
+<style>
+.pageWrap{
+	margin:5% auto;
+	padding:10px;
+	width:80%;
+	min-height:60%;
+	border-radius:3px;
+	box-shadow:0 0 15px 5px rgba(0,0,0,0.3);
+	background:#FFF;
+	z-index:2;
+	position:relative;
+	font-family: impact,arial;
+}
+.statusMsg{
+	background: none repeat scroll 0 0 rgba(152, 0, 0, 0.4);
+	bottom: -15px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.6);
+	color: #f3f3f3;
+	font-size: smaller;
+	font-weight: bold;
+	margin:  0;
+	padding: 8px 8px 15px;
+	position: fixed;
+	right: 5px;
+	width: 250px;
+	height:100%;
+	overflow: hidden;
+}
+.statusMsg:hover{
+	z-index: 9999;
+	background: none repeat scroll 0 0 rgba(152, 0, 0, 0.8);
+	width: 450px;
+	font-size:120%;
+}
+
+.statusMsg > div > p{
+	display: :block;
+	padding:0;
+	margin:0;
+}
+
+.target{
+	float:right;
+	font-size:180%;
+	opacity: 0.2;
+}
+</style>
+</head>
+<body></body>
+</html>
