@@ -1,5 +1,7 @@
 /*
 	Comp 2051 JS 
+	Tasks 1-4
+	David Lighty
 */
 
 var mainModule = function() {

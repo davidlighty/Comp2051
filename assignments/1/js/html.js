@@ -1,5 +1,6 @@
 /* 
 	HTML JS Utility Class
+	David Lighty
 */
 
 var htmlUtil = function() {

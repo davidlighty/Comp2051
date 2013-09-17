@@ -1,4 +1,4 @@
-// Misc JS Utilities
+// Misc JS Utilities - David Lighty
 
 
 /*
