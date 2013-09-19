@@ -17,8 +17,8 @@
 */
 
 // Global
-var arrModule; // util.js
-var msg; // util.js
+var arrModule; 			// util.js
+var msg; 				// util.js
 
 // Main Module - this holds the init and page creation logic  ((Controller))
 var labModule = function() {
@@ -55,6 +55,7 @@ var labModule = function() {
 		battle.players.push(new player("Human", playerTypeEnum.MAGE, 25));
 		// Do 1 round of battle.
 		battle.battle();
+		msg.set(battle.toString()); // Log
 		battle.round++; // increment the round number.
 		// Do action round
 		battle.actionRound();
@@ -72,6 +73,7 @@ var battleModule = function() {
 
 	// Methods
 	var battleRound = function() { // Main battle logic
+		msg.set("Starting battle round [" + this.round + "]");
 		for (var i = 0; i < this.players.length; i++) {
 			// Player attacks first.
 			var plyr = this.players[i];
@@ -91,10 +93,11 @@ var battleModule = function() {
 	var actionRound = function() {
 		// Ask the player for input on the next round of action.
 		// If the player has a special item, then they are allowed special actions.
+		msg.set("Starting action round [" + this.round + "]");
 	}
 
 	var toString = function() {
-		return "Battle Round: " + this.round + " Troll is at:" + (this.enemy) ? this.enemy.hp : "Dead!";
+		return "Battle Round: " + this.round + " Troll: " + ((this.enemy.isDead()) ? "Dead!" : this.enemy.hp);
 	};
 
 	// Constructor
@@ -105,6 +108,7 @@ var battleModule = function() {
 		this.players = players;
 		this.toString = toString;
 		this.battle = battleRound;
+		this.actionRound = actionRound;
 	};
 
 	return new battleModule();
