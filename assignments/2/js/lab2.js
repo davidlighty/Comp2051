@@ -1,6 +1,6 @@
 /*
 	Comp 2051 JS 
-	Assignment 2 | Lab 1
+	Assignment 2 | Lab 2
 	Control Statements
 	David Lighty
 
