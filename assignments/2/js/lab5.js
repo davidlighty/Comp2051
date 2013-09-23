@@ -1,6 +1,6 @@
 /*
 	Comp 2051 JS 
-	Assignment 2 | Lab 1
+	Assignment 2 | Lab 5
 	Control Statements
 	David Lighty
 
@@ -35,55 +35,30 @@ var labModule = function() {
 		msg = htmlModule.msg; // Logging
 		msg.set("Starting Module");
 
-		// Initilize variables
-		var scores = [],
-			more = true;
+		var oddNumberProd = oddNumberProduct();
+		d.write("Odd Number Product: " + oddNumberProduct.oddsProduct);
 
-		// Get Quiz input
-		while (more) {
-			var score = prompt("Pass or Fail? (1 or 2)", 0);
-			if (isNaN(score) || score != 1 || score != 2) {
-				//fail
-			} else {
-				scores.push(score);
-				if (!confirm("Another")) {
-					more = false;
-				}
-			}
-		}
 
-		// Output classAverage
-		var quiz = new quizModule(scores);
-		d.write("Results: "+ quiz.passedStudents +" passed and "+ quiz.failedStudents +" failed.");
-		if(quiz.passedStudents >= 8){
-			d.write(quiz.passedResult)
-		}
-
-	}
+	};
 
 	return new main();
 };
 
-/*
-	Determine class average based upon a set of scores
-*/
-var quizModule = function(_scores) {
-	var scores = _scores;
-	var examCount = _scores.length;
-	
-	this.passedStudents = function() {
-		var passed = 0;
-		for (var i = 0; i < scores; i++) {
-			if (scores[i] == 1) {
-				passed++;
-			}
+var oddNumberProduct = function() {
+	var toNumber = 15;
+	var odds = [];
+	var oddProduct = 1; // First odd number! Don't let this be zero!
+	// Start at 2, 1 is unneeded
+	for (var i = 2; i <= toNumber; i++) {
+		if ((i % 2) !== 0) {
+			odds.push(i); // this is an odd, due to a remainder
+			oddProduct = oddProduct * i;
 		}
-		return passed;
 	}
-	this.passedResult = function() {
-		return "Raise tuition";
-	}
-	this.failedStudents = function() {
-		return this.examCount - this.passedStudents();
-	}
-}
+
+	return {
+		odds: odds,
+		oddsProduct: oddProduct
+	};
+
+};

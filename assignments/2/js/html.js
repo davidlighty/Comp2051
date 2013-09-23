@@ -22,9 +22,7 @@ var htmlUtil = function() {
 		ele.appendChild(tempCnt);
 		return ele;
 	}
-	var outputToContentDiv = function(cnt) {
-		htmlModule.cntDiv.appendChild(htmlModule.appendAndCreateTextNode(htmlModule.createElement("p", ""), cnt));
-	}
+
 	// Create HTML items
 	var createHeader = function() {
 		msg.set("Create Header");
@@ -66,7 +64,6 @@ var htmlUtil = function() {
 			this.msg = msg = new statusMsg();
 			this.createElement = createElement;
 			this.appendAndCreateTextNode = appendAndCreateTextNode;
-			this.outputToContentDiv = outputToContentDiv;
 
 			/// Create Intial Layout
 			createLayout();

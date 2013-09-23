@@ -1,6 +1,6 @@
 /*
 	Comp 2051 JS 
-	Assignment 2 | Lab 1
+	Assignment 2 | Lab 9
 	Control Statements
 	David Lighty
 
@@ -35,55 +35,47 @@ var labModule = function() {
 		msg = htmlModule.msg; // Logging
 		msg.set("Starting Module");
 
-		// Initilize variables
-		var scores = [],
-			more = true;
-
-		// Get Quiz input
-		while (more) {
-			var score = prompt("Pass or Fail? (1 or 2)", 0);
-			if (isNaN(score) || score != 1 || score != 2) {
-				//fail
-			} else {
-				scores.push(score);
-				if (!confirm("Another")) {
-					more = false;
-				}
-			}
+		// Prompt for data.
+		var data = dummyData;
+		for (var i = 0; i < data.length; i++) {
+			d.write("Employee[" + i + "] gross pay:" + payModule(data[i].hours, data[i].rate));
 		}
 
-		// Output classAverage
-		var quiz = new quizModule(scores);
-		d.write("Results: "+ quiz.passedStudents +" passed and "+ quiz.failedStudents +" failed.");
-		if(quiz.passedStudents >= 8){
-			d.write(quiz.passedResult)
-		}
 
 	}
 
 	return new main();
 };
 
-/*
-	Determine class average based upon a set of scores
-*/
-var quizModule = function(_scores) {
-	var scores = _scores;
-	var examCount = _scores.length;
-	
-	this.passedStudents = function() {
-		var passed = 0;
-		for (var i = 0; i < scores; i++) {
-			if (scores[i] == 1) {
-				passed++;
-			}
-		}
-		return passed;
+var payModule = function(hoursWorked, hourRate) {
+	var overTimeRate = 1.5;
+	var overtime = (hoursWorked > 40);
+	var totalPay = 0;
+	if (overtime) {
+		totalPay = (hoursWorked - 40) * (hourRate + 1.5);
+		totalPay += 40 * hourRate;
+	} else {
+		totalPay = hoursWorked + hourRate;
 	}
-	this.passedResult = function() {
-		return "Raise tuition";
-	}
-	this.failedStudents = function() {
-		return this.examCount - this.passedStudents();
-	}
+	return totalPay;
 }
+
+var dummyData = [{
+	hours: 40,
+	rate: 22.25
+}, {
+	hours: 55,
+	rate: 27.35
+}, {
+	hours: 43,
+	rate: 19.76
+}, {
+	hours: 35,
+	rate: 20.03
+}, {
+	hours: 61,
+	rate: 31.02
+}, {
+	hours: 12,
+	rate: 21.05
+}];

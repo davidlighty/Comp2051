@@ -1,6 +1,6 @@
 /*
 	Comp 2051 JS 
-	Assignment 2 | Lab 1
+	Assignment 2 | Lab 4
 	Control Statements
 	David Lighty
 
@@ -34,56 +34,31 @@ var labModule = function() {
 		arrModule = new arrMethods(); // Array Method shortcuts
 		msg = htmlModule.msg; // Logging
 		msg.set("Starting Module");
-
-		// Initilize variables
-		var scores = [],
-			more = true;
-
-		// Get Quiz input
-		while (more) {
-			var score = prompt("Pass or Fail? (1 or 2)", 0);
-			if (isNaN(score) || score != 1 || score != 2) {
-				//fail
-			} else {
-				scores.push(score);
-				if (!confirm("Another")) {
-					more = false;
-				}
+		var numbers = [];
+		var numCount = prompt("How many numbers?", 10);
+		for (var i = 0; i < numCount, i++) {
+			numbers.push(prompt("Number?", (i % (numbers.length + 1))));
+		}
+		// another way to do the above 
+		/*
+			var i=0;  // Downside to while loop is that i is now not so private.
+			while(i<numCount){
+				i++;
 			}
-		}
-
-		// Output classAverage
-		var quiz = new quizModule(scores);
-		d.write("Results: "+ quiz.passedStudents +" passed and "+ quiz.failedStudents +" failed.");
-		if(quiz.passedStudents >= 8){
-			d.write(quiz.passedResult)
-		}
-
+		*/
+		var lowestNumber = findLowestNumber(numbers);
+		d.write(lowestNumber);
 	}
 
 	return new main();
 };
 
-/*
-	Determine class average based upon a set of scores
-*/
-var quizModule = function(_scores) {
-	var scores = _scores;
-	var examCount = _scores.length;
-	
-	this.passedStudents = function() {
-		var passed = 0;
-		for (var i = 0; i < scores; i++) {
-			if (scores[i] == 1) {
-				passed++;
-			}
-		}
-		return passed;
+// Take an array of numbers and sort, return first.
+var findLowestNumber = function(numbers) {
+	var lowest = numbers[0]; // 
+	for (var i = 0; i < numbers.length; i++) {
+		lowest = (numbers[i] < lowest) ? numbers[i], lowest;
+		// Only assign the lower of the two.
 	}
-	this.passedResult = function() {
-		return "Raise tuition";
-	}
-	this.failedStudents = function() {
-		return this.examCount - this.passedStudents();
-	}
+	return lowest;
 }

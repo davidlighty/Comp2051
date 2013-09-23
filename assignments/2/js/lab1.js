@@ -35,30 +35,21 @@ var labModule = function() {
 		msg = htmlModule.msg; // Logging
 		msg.set("Starting Module");
 
-		// Initilize variables
-		var scores = [],
-			more = true;
-
-		// Get Quiz input
-		while (more) {
-			var score = prompt("Pass or Fail? (1 or 2)", 0);
-			if (isNaN(score) || score != 1 || score != 2) {
-				//fail
+		var scores = [];
+		// Get Quiz input - integer based, 1-100
+		for (var i = 0; i < 100; i++) {
+			var score = parseInt(prompt("Score (1 to 100)", 0));
+			if (isNaN(score)) {
+				//fail 
 			} else {
-				scores.push(score);
-				if (!confirm("Another")) {
-					more = false;
-				}
+				(score >= 0 || score <= 100) ? scores.push(score) : null;
 			}
 		}
-
+		// Get Quiz student
+		var students = 10;
 		// Output classAverage
-		var quiz = new quizModule(scores);
-		d.write("Results: "+ quiz.passedStudents +" passed and "+ quiz.failedStudents +" failed.");
-		if(quiz.passedStudents >= 8){
-			d.write(quiz.passedResult)
-		}
-
+		var quiz = new quizModule(scores,students);
+		d.write(quiz.classAverage());
 	}
 
 	return new main();
@@ -67,23 +58,14 @@ var labModule = function() {
 /*
 	Determine class average based upon a set of scores
 */
-var quizModule = function(_scores) {
+var quizModule = function(_scores, _studentCount) {
 	var scores = _scores;
-	var examCount = _scores.length;
-	
-	this.passedStudents = function() {
-		var passed = 0;
-		for (var i = 0; i < scores; i++) {
-			if (scores[i] == 1) {
-				passed++;
-			}
+	var studentCount = _studentCount;
+	this.classAverage = function() {
+		var sum = 0;
+		for (var i = 0; i < scores.length; i++) {
+			sum += parseInt(scores);
 		}
-		return passed;
-	}
-	this.passedResult = function() {
-		return "Raise tuition";
-	}
-	this.failedStudents = function() {
-		return this.examCount - this.passedStudents();
+		return sum / studentCount;
 	}
 }
