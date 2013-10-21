@@ -11,7 +11,7 @@ var arrModule; // util.js
 var msg; // util.js
 
 
-// Main Module - this holds the init and page creation logic  ((Controller))
+// Main Module - this holds the init logic  ((Controller))
 var labModule = function() {
 	var htmlModule; // This doesn't need to be a global.
 	var ajaxModule;
