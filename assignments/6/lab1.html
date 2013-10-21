@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- No HTML -->
+<!-- David Lighty | Comp 2051 @BCIT -->
+<html>
+<head>
+	<script type='text/javascript' src='./js/lab1.js'></script>
+	<script type='text/javascript' src='./js/util.js'></script>
+	<script type='text/javascript' src='./js/html.js'></script>
+	<script type='text/javascript'>
+	// MAIN RUN
+window.onload = function() {
+	var module = new labModule();
+}
+</script>
+<link href='http://fonts.googleapis.com/css?family=Oldenburg' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' type='text/css' href='./css/main.css'>
+</head>
+<body>
+<div class='pageWrap clearfix'>
+<div class='col'>
+<section class='form' id='formSection'>
+	<h1>Feedback Form</h1>
+	<p>Please provide some feedback about your experience:</p>
+	<form method='post' id='feedbackForm'>
+		<label>Name</label>
+			<input type='text' name='name' id='name' placeholder='Name' autofocus='true'/>
+					<label>E-mail Address</label>
+			<input type='text' name='email' id='email' placeholder='Email'/>
+		<label>Comments</label>
+			<textarea name='comments' id='comments' placeholder='Comments...'></textarea>
+		<div class='checkboxes'>
+		<p>Things you liked</p>
+			<label><input type='checkbox' value='links'>Links</label>
+			<label><input type='checkbox' value='easeofuse'>Ease of use</label>
+			<label><input type='checkbox' value='images'>Images</label>
+			<label><input type='checkbox' value='sourcecode'>Source code</label>
+		</div>
+		<div class='radiobuttons'>
+		<p>How did you hear about us?</p>
+			<label><input type='radio' value='othersite'/>Another site</label>
+			<label><input type='radio' value='reference'/>Reference</label>
+			<label><input type='radio' value='search'/>Searched</label>
+			<label><input type='radio' value='other'/>Other</label>
+		</div>
+		<div class='dropdownselect'>
+		<label>Rate this site:</label>
+		<select name='siteRating' id='siteRating'>
+			<option value='10'>10</option>
+			<option value='9'>9</option>
+			<option value='8'>8</option>
+			<option value='7'>7</option>
+			<option value='6'>6</option>
+			<option value='5'>5</option>
+			<option value='4'>4</option>
+			<option value='3'>3</option>
+			<option value='2'>2</option>
+			<option value='1'>1</option>
+		</select>
+		</div>
+		<div class='buttons'>
+		<button id='submitBtn'>Submit</button>
+		<button>Cancel</button>
+		</div>
+	</form>
+	</section>
+	</div>
+	<div class='col'>
+	<section class='feedback' id='feedbackSection'>
+		
+	</section>
+	</div>
+	</div>
+</body>
+</html>
