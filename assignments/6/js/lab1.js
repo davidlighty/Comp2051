@@ -53,10 +53,10 @@ var labModule = function() {
 						// Is this an allowed email addy?
 						if (allowedEmails.length > 0) {
 							if (arrModule.Contains(allowedEmails, oField.value) >= 0) {
-								feedbackMessages.push(oField.value + ' is allowed.');
-							} else {
+								feedbackMessages.push(oField.value + ' is not allowed.');
 								isValid = false;
-								feedbackMessages.push("This email is not allowed.");
+							} else {
+								feedbackMessages.push("This email is allowed.");
 							}
 						}
 					} else {
